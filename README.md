@@ -13,7 +13,7 @@
 ## Installation
 
 ```bash
-composer require larvacms/supports -vv
+composer require larvacms/support -vv
 ```
 
 ## License

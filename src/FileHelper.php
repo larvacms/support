@@ -116,7 +116,7 @@ class FileHelper
      *
      * @return string
      */
-    public static function getExtBySignature($stream)
+    public static function getExtBySignature($stream): string
     {
         $prefix = strval(bin2hex(mb_strcut($stream, 0, 10)));
 
