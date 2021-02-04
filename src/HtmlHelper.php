@@ -195,14 +195,31 @@ class HtmlHelper
     }
 
     /**
+     * 删除HTML指定标签
+     * @param string $content
+     * @param string|array $tags
+     * @return string
+     */
+    public static function strip_html_tags(string $content, $tags): string
+    {
+        $patterns = [];
+        if (!is_array($tags)) {
+            $tags = [$tags];
+        }
+        foreach ($tags as $tag) {
+            $patterns[] = "/(<(?:\/" . $tag . "|" . $tag . ")[^>]*>)/i";
+        }
+        return preg_replace($patterns, '', $content);
+    }
+
+    /**
      * 删除所有IMG标签
      * @param string $content
      * @return string
      */
-    public static function cleanImg(string $content): string
+    public static function strip_html_img(string $content): string
     {
-        $content = preg_replace('/<img[^>]*src=[\'"]?([^>\'"\s]*)[\'"]?[^>]*>/ie', "", $content);
-        return $content;
+        return static::strip_html_tags($content, ['img']);
     }
 
     /**

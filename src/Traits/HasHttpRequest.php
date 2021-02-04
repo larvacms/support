@@ -39,6 +39,7 @@ trait HasHttpRequest
      * @var array
      */
     protected static $defaults = [
+        'http_errors' => false,
         'force_ip_resolve' => 'v4',
         'curl' => [
             CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
